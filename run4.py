@@ -20,22 +20,33 @@ def random_col(board):
 
 ship_row = random_row(board)
 ship_col = random_col(board)
-guess_row = int(input("Guess Row: "))
-guess_col = int(input("Guess Col: "))
-
 print(ship_row)
 print(ship_col)
 
-if guess_row == ship_row and guess_col == ship_col:
-    print("Congrats You sank their battleship")
-else:
-    if (guess_row not in range(5)) or \
-    (guess_col not in range(5)):
-         print("Oops out of grid")
+
+for turn in range(4):
+    print("Turn", turn + 1)
+
+    guess_row = int(input("Guess Row: "))
+    guess_col = int(input("Guess Col: "))
+    # print(ship_row)
+    # print(ship_col)
+
+    if guess_row == ship_row and guess_col == ship_col:
+        print("Congrats You sank their battleship")
+        break
     else:
-        print("You missed my battleship")
-        board[guess_row][guess_col]="X"
-        print_board(board)
+        if (guess_row < 0 or guess_row > 4) or \
+        (guess_col < 0 or guess_col > 4):
+            print("Oops out of grid")
+        elif(board[guess_row][guess_col] == "X"):
+            print("You guessed that spot already")
+        else:
+            print("You missed my battleship")
+            board[guess_row][guess_col]="X"
+            if turn != 4:
+                print("Game Over")
+            print_board(board)
 
 
 
@@ -49,3 +60,16 @@ else:
     #     print ("You missed my battleship")
     #     board[guess_row][guess_col] = "x"
     #     print_board(board)
+
+
+# working
+#     if guess_row == ship_row and guess_col == ship_col:
+#     print("Congrats You sank their battleship")
+# else:
+#     if (guess_row not in range(5)) or \
+#     (guess_col not in range(5)):
+#          print("Oops out of grid")
+#     else:
+#         print("You missed my battleship")
+#         board[guess_row][guess_col]="X"
+#         print_board(board)
