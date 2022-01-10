@@ -1,110 +1,56 @@
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
+from random import randint
 
-import gspread
-from google.oauth2.service_account import Credentials
-from pprint import pprint
+board = []
 
-
-SCOPE = [
-    "https://www.googleapis.com/auth/spreadsheets",
-    "https://www.googleapis.com/auth/drive.file",
-    "https://www.googleapis.com/auth/drive"
-    ]
-
-CREDS = Credentials .from_service_account_file('battleship.json')
-SCOPED_CREDS = CREDS.with_scopes(SCOPE)
-GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-SHEET = GSPREAD_CLIENT.open('battleships')
-
-# sales = SHEET.worksheet('sales')
-
-# data = sales.get_all_values()
-
-# print(data)
-
-def get_sales_data():
-    """
-    Get sales figures input from the user
-    """
-
-    while True:
-        print("Please enter sales data from the last market.")
-        print("Data should be six numbers, separated by a commas.")
-        print("Example: 10,20,30,40,50,60\n")
-
-        data_str = input("Enter your data here: ")
-        # print(f"The data provided is: {data_str}")
-
-        sales_data = data_str.split(",")
-        # print(sales_data)
-        # validate_data(sales_data)
-
-        if validate_data(sales_data):
-            print("Data is valid!")
-            break
-
-    return sales_data
-
-def validate_data(values):
-    """
-    Inside the try, converts all string values into integers.
-    Raises ValueError if strings cannot be converted into int,
-    or if there aren't exactly 6 values
-    """
-    print(values)
-    try:
-        [int(value) for value in values]
-        if len(values) != 6:
-            raise ValueError(
-                f"Exactly 6 values required, you provided {len(values)}"
-            )
-    except ValueError as e:
-        print(f"Invalid data: {e}, please try again.\n")
-        return False
-
-    return True
-
-    # print(values)
+for x in range(0, 5):
+    board.append(['0'] * 5)
 
 
-def update_sales_worksheet(data):
-    """
-    Update sales worksheet, add new row with the list data provided.
-    """
-
-    print("Updating sales worksheet...\n")
-    sales_worksheet = SHEET.worksheet("sales")
-    sales_worksheet.append_row(data)
-    print("Sales worksheet updated successfully.\n")
+def print_board():
+    """ Prints the board """
+    for row in board:
+        print(' '.join(row))
 
 
-def calculate_surplus_data(sales_row):
-    """
-    Compare sales with stock and calculate the surplus for each item type.
+print("Lets play Battleships")
+print_board()
 
-    The surplus is defined as the sales figure subtracted from the stock:
-    -Positive surplus indicates waste
-    - Negative surplus indcates extra made when stock was sold out.
-    """
-    print("Calculating surplus data...\n")
-    stock = SHEET.worksheet("stock").get_all_values()
-    stock_row = stock[-1]
-    print(f"stock_row:{stock_row}")
-    print(f"sales_row:{sales_row}")
-    # print(stock_row)
-    # pprint(stock)
-    # print(get_all_values)
 
-def main():
-    """
-    Run all program functions
-    """
-    data = get_sales_data()
-    sales_data = [int(num)for num in data]
-    update_sales_worksheet(sales_data)
-    calculate_surplus_data(sales_data)
+def random_row():
+    """ Prints the board """
+    return randint(0, len(board)-1)
 
-print("Welcome to Love Sandwiches Data Automation")
-main()
+
+def random_col():
+    """ Prints the board """
+    return randint(0, len(board[0])-1)
+
+
+ship_row = random_row()
+ship_col = random_col()
+print(ship_row)
+print(ship_col)
+
+
+for turn in range(4):
+    print("Turn", turn + 1)
+
+    guess_row = int(input("Guess Row: "))
+    guess_col = int(input("Guess Col: "))
+    # Guess the row of where the ship is on the board
+    if guess_row == ship_row and guess_col == ship_col:
+        print("HIT! You sank their battleship")
+        print("Game Over")
+        break
+
+    else:
+        if guess_row < 0 or guess_row > 4 or guess_col < 0 or guess_col > 4:
+            print("Oops out of grid area")
+        elif(board[guess_row][guess_col] == "X"):
+            print("You guessed that spot already")
+        else:
+            print("You missed my battleship")
+            board[guess_row][guess_col] = "X"
+            if turn != 4:
+                print("Game Over")
+            print_board()
