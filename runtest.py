@@ -3,7 +3,7 @@ from random import randint
 board = []
 
 for x in range(0, 10):
-    board.append(['0'] * 10)
+    board.append(['.'] * 10)
 
 
 def print_board():
@@ -44,7 +44,7 @@ for turn in range(4):
         break
 
     else:
-        if guess_row < 0 or guess_row > 4 or guess_col < 0 or guess_col > 4:
+        if guess_row < 0 or guess_row > 10 or guess_col < 0 or guess_col > 10:
             print("Oops out of grid area")
         elif(board[guess_row][guess_col] == "X"):
             print("You guessed that spot already")
@@ -52,5 +52,6 @@ for turn in range(4):
             print("You missed my battleship")
             board[guess_row][guess_col] = "X"
             if turn != 4:
-                print("Game Over")
-            print_board()
+                print_board()
+            #     print("Game Over")
+            # print_board()
