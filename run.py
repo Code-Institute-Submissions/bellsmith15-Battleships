@@ -44,7 +44,7 @@ for turn in range(4):
         break
 
     else:
-        if guess_row < 0 or guess_row > 4 or guess_col < 0 or guess_col > 4:
+        if guess_row < 0 or guess_row > 9 or guess_col < 0 or guess_col > 9:
             print("Oops out of grid area")
         elif(board[guess_row][guess_col] == "X"):
             print("You guessed that spot already")
