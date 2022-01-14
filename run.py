@@ -28,8 +28,8 @@ def random_col():
 
 ship_row = random_row()
 ship_col = random_col()
-print(ship_row)
-print(ship_col)
+# print(ship_row)
+# print(ship_col)
 
 
 for turn in range(4):
