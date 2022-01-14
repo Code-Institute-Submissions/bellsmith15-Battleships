@@ -2,15 +2,15 @@
 
 # PURPOSE
 ## Introduction:
-Battleships game played on grids which each player's fleet of battleships are marked. The locations of the fleets are concealed from the other player. Players take turns plotting shots at the other player's ships. The objective of the game being to destroy the opposing player's fleet.
+Battleships game played on grids which each player's fleet of battleships are marked. The locations of the fleets are concealed from the other player. Players take turns plotting shots at the other player's ships. The objective of the game being to destroy the opposing player's fleet. This is a computer version of the original board game, based in a mock terminal deployed via Heroku.
 
-* [Here is a link to the final project GITHUB POST](https://bellsmith15.github.io/rock-paper-sissors-game/)
+* [Here is a link to the final deployment of the project HEROKU.](https://battleships-by-nikki.herokuapp.com/)
 ## FINAL DESIGN
 
 ![Final project image of home page monitors from Am I responsive](assets/images/am-i-responsive.png)
 
 ## INITIAL IDEA CONCEPT
-My initial idea for the project was to create a game that is simple to use and competitive. The game is for people of all ages as a light bit of fun!
+My initial idea for the project was to create a simple game of battleships. The game is for people of all ages as a bit of fun!
 
 #  
 ## Table of Contents
