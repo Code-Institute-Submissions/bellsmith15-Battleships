@@ -85,7 +85,7 @@ ship_row = random_row()
 ship_col = random_col()
 
 
-for turn in range(4):
+for turn in range(6):
     print("Turn", turn + 1)
 
     guess_row = int(input("Guess Row: "))
@@ -97,19 +97,22 @@ for turn in range(4):
         break
 
     else:
-        if guess_row < 0 or guess_row > 10 or guess_col < 0 or guess_col > 10:
+        if guess_row < 0 or guess_row > 9 or guess_col < 0 or guess_col > 9:
             print("Oops out of grid area")
         elif(board[guess_row][guess_col] == "X"):
             print("You guessed that spot already")
         else:
             print("You missed my battleship")
             board[guess_row][guess_col] = "X"
-            if turn != 4:
+            if turn == 5:
                 print("Game Over")
-            print_board(board)
-            # print_board()
+        print_board()
+                # print_board()
+        # print("Game Over")
 
-
+#             if turn != 4:
+#                 print("Game Over")
+#             print_board(board)
 
 
 
