@@ -3,7 +3,6 @@
 # OVERVIEW
 Battleships game is played on grids which each player's fleet of battleships are marked. The locations of the fleets are concealed from the other player. Players take turns plotting shots at the other player's ships. The objective of the game being to destroy the opposing player's fleet. This is a computer version of the original board game, based in a mock terminal deployed via Heroku.
 
-* [Here is a link to the final deployment of the project HEROKU.](https://nsmith-battleship.herokuapp.com/)
 * [Here is a link to the final deployment of the project HEROKU.](https://nsmithbattleship.herokuapp.com/)
 ## FINAL DESIGN
 
