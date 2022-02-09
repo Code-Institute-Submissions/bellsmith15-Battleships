@@ -21,6 +21,7 @@ def how_play():
     print("Hits are marked with a * and Misses are markeds by x")
     print("You have 10 go's to sink the ship.")
 
+
 for x in range(0, 7):
     computer_board.append(['.'] * 7)
     player_board.append(['.'] * 7)
