@@ -15,16 +15,17 @@ def how_play():
     print("\n")
     print("How to Play the Game:")
     print("The aim is to sink your opponents ship.")
-    print("Each row uses co-ordinates of (0,9) across 8 rows.")
-    print("Inputs must use numbers between (0,6) for row and column, eg.(0,0)")
+    print("Each row uses co-ordinates of (0,7) across 8 rows.")
+    print("Inputs must use numbers between (0,7) for row and column, eg.(0,0)")
     print("Board is represented by a grid of dots")
-    print("Hits are marked with a * and Misses are markeds by x")
+    print("Hits are marked with * and Misses are marked by x")
+    print("Computer guesses are marked by c")
     print("You have 10 go's to sink the ship.")
 
 
-for x in range(0, 7):
-    computer_board.append(['.'] * 7)
-    player_board.append(['.'] * 7)
+for x in range(0, 8):
+    computer_board.append(['.'] * 8)
+    player_board.append(['.'] * 8)
     # This for loop creates a list of 8 rows it then
     # appends this array with dots to represent board
 
@@ -88,10 +89,10 @@ def battleship():
             player_col = int(player_col)
             player_row = int(player_row)
 
-            if player_row < 0 or player_row > 6 or \
-                    player_col < 0 or player_col > 6:
+            if player_row < 0 or player_row > 7 or \
+                    player_col < 0 or player_col > 7:
                 print("Oops out of grid area")
-                print("Choose again between 0 and 6")
+                print("Choose again between 0 and 7")
             elif(player_row, player_col) in set_ships:
                 print("A ship sails here already")
             else:
@@ -116,8 +117,8 @@ def battleship():
 
         # Guess logic for the player row and column
         # of where the ship is on the board
-        if player_guess_row < int(0) or player_guess_row > int(6) or \
-                (player_guess_col < 0 or player_guess_col > 6):
+        if player_guess_row < int(0) or player_guess_row > int(7) or \
+                (player_guess_col < 0 or player_guess_col > 7):
             print("Not even near it")
         elif player_board[player_guess_row][player_guess_col] == "*":
             print("Already Sunk this one!")
@@ -128,8 +129,8 @@ def battleship():
             computer_board[player_guess_row][player_guess_col] = "*"
             computer_destroyed += 1
         else:
-            if (player_guess_row < 0 or player_guess_row < 6) or\
-                    (player_guess_col < 0 or player_guess_col < 6):
+            if (player_guess_row < 0 or player_guess_row < 7) or\
+                    (player_guess_col < 0 or player_guess_col < 7):
                 print("Not even near")
             elif player_board[player_guess_row][player_guess_col] == "x":
                 print("Already Sunk this one!")
@@ -142,11 +143,13 @@ def battleship():
         if comp_guess_row == player_row and comp_guess_col == player_col:
             player_board[comp_guess_row][comp_guess_col] = "*"
             computer_board[comp_guess_row][comp_guess_col] = "*"
+            computer_board[player_guess_row][player_guess_col] = "x"
             print("Computer HIT and SINKS!")
             player_destroyed += 1
         else:
             player_board[comp_guess_row][comp_guess_col] = "x"
-            computer_board[comp_guess_row][comp_guess_col] = "x"
+            computer_board[comp_guess_row][comp_guess_col] = "c"
+            computer_board[player_guess_row][player_guess_col] = "x"
             print("They missed you this time")
 
         print("\n")
@@ -163,6 +166,7 @@ def battleship():
             print("...play again")
         if computer_destroyed == 1:
             print("Computer ships are all hit")
+            print("GAME OVER!")
             break
 
         if player_destroyed == 1:

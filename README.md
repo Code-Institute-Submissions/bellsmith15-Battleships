@@ -137,12 +137,14 @@ A notification will let the player know if there has been a hit or miss and a ov
 
 ![Computer-win](./assets/images/computer-win.png)
 
-Duplicate
+![Joint-win](./assets/images/joint-win.png)
+
 
 Error logic
 
 * Notable Bugs
 There were a few bugs in this program I went through them using GitPod and PEP8. once I worked through the issues that were identified in GitPod I checked for errors in PEP8 and I noticed that there are some erros that showed up in GitPod that did not in PEP8 see examples of the working through them.
+I had a bug in deploying Heroku I checked all the processes of the deployment and deployed it 3 times to work out the bug was resolved by removing images in the views folder and updating the layout.html made the app work in Heroku.
 
 
 * PEP8
